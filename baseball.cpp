@@ -324,6 +324,9 @@ class Player:Hitter,Pitcher{
 			}
 			cout<<"\n";
 		}
+		vector<int> get_statline(){
+			return statline;
+		}
 		void print_player_info(bool is_hitter){
 			if(is_hitter == true){
 				h.print_all_categories();
@@ -352,6 +355,66 @@ class Player:Hitter,Pitcher{
 		}
 };
 
+double hitter_total(Player player,Hitter h){
+	vector<string> cats = h.get_cats();
+	vector<int> statline = player.get_statline();
+	double value = 0;
+	for(int i= 0; i<cats.size(); i++){
+		if(cats[i] == "RUN" || cats[i] == "R" || cats[i] == "1B" || cats[i] == "RBI" || cats[i] == "SH" || cats[i] == "SB"){
+			value += statline[i];
+		}		
+		if(cats[i] == "2B"){
+			value += (2*statline[i]);
+		}
+		if(cats[i] == "3B"){
+			value += (3*statline[i]);
+		}
+		if(cats[i] == "HR"){
+			value += (4*statline[i]);
+		}
+		if(cats[i] == "GS"){
+			value += (6*statline[i]);
+		}
+		if(cats[i] == "BB"){
+			value += (0.25*statline[i]);
+		}
+	}
+	return value;
+}
+
+double pitcher_total(Player player,Pitcher p){ 
+	vector<string> cats = p.get_cats();
+	vector<int> statline = player.get_statline();
+	double value = 0;
+	for(int i= 0; i<cats.size(); i++){
+		if(cats[i] == "IP"){
+			value += (0.5*statline[i]);
+		}		
+		if(cats[i] == "W" || cats[i] == "WIN" || cats[i] == "RW"){
+			value += (5*statline[i]);
+		}
+		if(cats[i] == "CG" || cats[i] == "SHO" || cats[i] == "QS"){
+			value += (3*statline[i]);
+		}
+		if(cats[i] == "SV"){
+			value += (4*statline[i]);
+		}
+		if(cats[i] == "HLD"){
+			value += (2*statline[i]);
+		}
+		if(cats[i] == "K" || cats[i] == "SO"){
+			value += statline[i];
+		}
+		if(cats[i] == "HIT" || cats[i] == "H" || cats[i] == "BB"){
+			value -= (0.25*statline[i]);
+		}
+		if(cats[i] == "ER"){
+			value -= statline[i];
+		}
+	}
+	return value;
+}
+
 int main(){
 	Hitter h;
 	h.prompt();
@@ -361,14 +424,23 @@ int main(){
 	p.prompt();
 	p.print_all_categories();
 	
-	Player barry_bonds("BarryBonds2001", h);
+	string bonds = "BarryBonds2001";
+	Player barry_bonds(bonds, h);
 	barry_bonds.player_prompt(true);
 	barry_bonds.print_player_info(true);
-	Player alex_rodriguez("AlexRodriguez2007", h);
+	cout<<bonds<<"'s total fantasy points: "<<hitter_total(barry_bonds,h)<<"\n";
+	
+	string aRod = "AlexRodriguez2007";
+	Player alex_rodriguez(aRod, h);
 	alex_rodriguez.player_prompt(true);
 	alex_rodriguez.print_player_info(true);
-	Player clayton_kershaw("ClaytonKershaw2014", p);
+	cout<<aRod<<"'s total fantasy points: "<<hitter_total(alex_rodriguez,h)<<"\n";
+	
+	string kershaw = "ClaytonKershaw2014";
+	Player clayton_kershaw(kershaw, p);
 	clayton_kershaw.player_prompt(false);
 	clayton_kershaw.print_player_info(false);
+	cout<<kershaw<<"'s total fantasy points: "<<pitcher_total(clayton_kershaw,p)<<"\n";
+	
 	return 0;
 }
