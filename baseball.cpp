@@ -7,137 +7,156 @@ using namespace std;
 
 class Hitter{
 	private:
-		vector<string> categories;
+		vector<pair<string,double>> categories;
 	public:
-		void add_hit(string category){
+		void add_hit(string category, double value){
 			string cat = category;
+			double val = value;
 			for (int i= 0; i<categories.size(); i++){
-				if (cat == categories[i] || cat == "R" && categories[i] == "RUN" || cat == "RUN" && categories[i] == "R" || cat == "SO" && categories[i] == "K" ||
-					cat == "K" && categories[i] == "SO"){
+				if (cat == categories[i].first || cat == "R" && categories[i].first == "RUN" || cat == "RUN" && categories[i].first == "R" || cat == "SO" && 
+				    categories[i].first == "K" || cat == "K" && categories[i].first == "SO"){
 						cout<< "You've already entered that category!\n";
 						return;
 				}
 			}
 			if(cat == "R" || cat == "RUN" || cat == "1B" || cat == "2B" || cat == "3B" || cat == "HR" || cat == "RBI" || cat == "BB" || cat == "K" || cat == "SB" ||
 			   cat == "SH" || cat == "GS" || cat == "SO" || cat == "CS") 
-				categories.push_back(cat);
+				categories.push_back(make_pair(cat,val));
 			else{
 				cout<<"Invalid category!\n";
 			}
 		}
 		void prompt(){
+			cout<<"Add a valid MLB hitting category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished\n";
+			cout<<"Example: HR 4\n"; 
 			while(1){
 				string cat;
-				cout<<"Add a valid MLB hitting category (3 char limit, UPPERCASE), type Q when finished\n";
+				double cat_value;
+				cout<<"Add a valid MLB hitting category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished\n";
 				cin>>cat;
-				if (cat == "Q") break;
+				cin>>cat_value;
+				if (cat == "Q" && cat_value == 0) break;
 				if (cat.length() <= 3){
-					add_hit(cat);
+					add_hit(cat,cat_value);
 				}
 				else{
 					cout<<"Too many letters!\n";
 				}
 			}
 		}
-		vector<string> get_cats(){
+		vector<pair<string,double>> get_cats(){
 			return categories;
 		}
 		void print_all_categories(){
-			vector<string> cats = get_cats();
+			vector<pair<string,double>> cats = get_cats();
 			int count = 0;
 			cout<<"                    ";
 			for(int i= 0; i< cats.size(); i++){
-				if(cats[i] == "R"){
-					categories[count] = cats[i];
+				if(cats[i].first == "R"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
 					++count;
-					cout<<"   "<<cats[i];
+					cout<<"   "<<cats[i].first;
 				}
-				if(cats[i] == "RUN"){
-					categories[count] = cats[i];
+				if(cats[i].first == "RUN"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
 					++count;
-					cout<<" "<<cats[i];
-				}
-			}
-			for(int i= 0; i<cats.size(); i++){
-				if(cats[i] == "1B"){
-					categories[count] = cats[i];
-					++count;
-					cout<<"  "<<cats[i];
+					cout<<" "<<cats[i].first;
 				}
 			}
 			for(int i= 0; i<cats.size(); i++){
-				if(cats[i] == "2B"){
-					categories[count] = cats[i];
+				if(cats[i].first == "1B"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
 					++count;
-					cout<<"  "<<cats[i];
+					cout<<"  "<<cats[i].first;
 				}
 			}
 			for(int i= 0; i<cats.size(); i++){
-				if(cats[i] == "3B"){
-					categories[count] = cats[i];
+				if(cats[i].first == "2B"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
 					++count;
-					cout<<"  "<<cats[i];
+					cout<<"  "<<cats[i].first;
 				}
 			}
 			for(int i= 0; i<cats.size(); i++){
-				if(cats[i] == "HR"){
-					categories[count] = cats[i];
+				if(cats[i].first == "3B"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
 					++count;
-					cout<<"  "<<cats[i];
+					cout<<"  "<<cats[i].first;
 				}
 			}
 			for(int i= 0; i<cats.size(); i++){
-				if(cats[i] == "RBI"){
-					categories[count] = cats[i];
+				if(cats[i].first == "HR"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
 					++count;
-					cout<<" "<<cats[i];
+					cout<<"  "<<cats[i].first;
 				}
 			}
 			for(int i= 0; i<cats.size(); i++){
-				if(cats[i] == "SH"){
-					categories[count] = cats[i];
+				if(cats[i].first == "RBI"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
 					++count;
-					cout<<"  "<<cats[i];
+					cout<<" "<<cats[i].first;
 				}
 			}
 			for(int i= 0; i<cats.size(); i++){
-				if(cats[i] == "SB"){
-					categories[count] = cats[i];
+				if(cats[i].first == "SH"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
 					++count;
-					cout<<"  "<<cats[i];
+					cout<<"  "<<cats[i].first;
 				}
 			}
 			for(int i= 0; i<cats.size(); i++){
-				if(cats[i] == "CS"){
-					categories[count] = cats[i];
+				if(cats[i].first == "SB"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
 					++count;
-					cout<<"  "<<cats[i];
+					cout<<"  "<<cats[i].first;
 				}
 			}
 			for(int i= 0; i<cats.size(); i++){
-				if(cats[i] == "BB"){
-					categories[count] = cats[i];
+				if(cats[i].first == "CS"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
 					++count;
-					cout<<"  "<<cats[i];
+					cout<<"  "<<cats[i].first;
 				}
 			}
 			for(int i= 0; i<cats.size(); i++){
-				if(cats[i] == "K"){
-					categories[count] = cats[i];
+				if(cats[i].first == "BB"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
 					++count;
-					cout<<"   "<<cats[i];
-				}
-				if(cats[i] == "SO"){
-					categories[count] = cats[i];
-					++count;
-					cout<<"  "<<cats[i];
+					cout<<"  "<<cats[i].first;
 				}
 			}
 			for(int i= 0; i<cats.size(); i++){
-				if(cats[i] == "GS"){
-					categories[count] = cats[i];
+				if(cats[i].first == "K"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
 					++count;
-					cout<<"  "<<cats[i];
+					cout<<"   "<<cats[i].first;
+				}
+				if(cats[i].first == "SO"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
+					++count;
+					cout<<"  "<<cats[i].first;
+				}
+			}
+			for(int i= 0; i<cats.size(); i++){
+				if(cats[i].first == "GS"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
+					++count;
+					cout<<"  "<<cats[i].first;
 				}
 			}
 			cout<<"\n";
@@ -146,142 +165,163 @@ class Hitter{
 
 class Pitcher{
 	private:
-		vector<string> categories;
+		vector<pair<string,double>> categories;
 	public:
-		void add_pitch(string category){
+		void add_pitch(string category,double value){
 			string cat = category;
+			double val = value;
 			for (int i= 0; i<categories.size(); i++){
-				if (cat == categories[i] || cat == "W" && categories[i] == "WIN" || cat == "WIN" && categories[i] == "W" || cat == "H" && categories[i] == "HIT" ||
-					cat == "HIT" && categories[i] == "H" || cat == "SO" && categories[i] == "K" || cat == "K" && categories[i] == "SO"){
+				if (cat == categories[i].first || cat == "W" && categories[i].first == "WIN" || cat == "WIN" && categories[i].first == "W" || cat == "H" && 
+				    categories[i].first == "HIT" || cat == "HIT" && categories[i].first == "H" || cat == "SO" && categories[i].first == "K" || cat == "K" && 
+					categories[i].first == "SO"){
 						cout<< "You've already entered that category!\n";
 						return;
 				}
 			}
 			if(cat == "W" || cat == "WIN" || cat == "SV" || cat == "HLD" || cat == "K" || cat == "BB" || cat == "H" || cat == "HIT" || cat == "QS" || cat == "IP" ||
 			   cat == "ER" || cat == "CG" || cat == "SHO" || cat == "RW" || cat == "SO") 
-				categories.push_back(cat);
+				categories.push_back(make_pair(cat,val));
 			else {
 				cout<<"Invalid category!\n";
 			}
 		}
 		void prompt(){
+			cout<<"Add a valid MLB pitching category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished\n";
+			cout<<"Example: IP 0.5\n"; 
 			while(1){
 				string cat;
-				cout<<"Add a valid MLB pitching category (3 char limit, UPPERCASE), type Q when finished\n";
+				double cat_value;
+				cout<<"Add a valid MLB pitching category (3 char limit, UPPERCASE), type Q 0 when finished\n";
 				cin>>cat;
-				if (cat == "Q") break;
+				cin>>cat_value;
+				if (cat == "Q" && cat_value == 0) break;
 				if (cat.length() <= 3){
-					add_pitch(cat);
+					add_pitch(cat,cat_value);
 				}
 				else{
 					cout<<"Too many letters!\n";
 				}
 			}
 		}
-		vector<string> get_cats(){
+		vector<pair<string,double>> get_cats(){
 			return categories;
 		}
 		void print_all_categories(){
-			vector<string> cats = get_cats();
+			vector<pair<string,double>> cats = get_cats();
 			int count = 0;
 			cout<<"                    ";
 			for(int i= 0; i<cats.size(); i++){
-				if(cats[i] == "IP"){
-					categories[count] = cats[i];
+				if(cats[i].first == "IP"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
 					++count;
-					cout<<"  "<<cats[i];
+					cout<<"  "<<cats[i].first;
 				}
 			}
 			for(int i= 0; i< cats.size(); i++){
-				if(cats[i] == "W"){
-					categories[count] = cats[i];
+				if(cats[i].first == "W"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
 					++count;
-					cout<<"   "<<cats[i];
+					cout<<"   "<<cats[i].first;
 				}
-				if(cats[i] == "WIN"){
-					categories[count] = cats[i];
+				if(cats[i].first == "WIN"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
 					++count;
-					cout<<" "<<cats[i];
-				}
-			}
-			for(int i= 0; i<cats.size(); i++){
-				if(cats[i] == "CG"){
-					categories[count] = cats[i];
-					++count;
-					cout<<"  "<<cats[i];
+					cout<<" "<<cats[i].first;
 				}
 			}
 			for(int i= 0; i<cats.size(); i++){
-				if(cats[i] == "SHO"){
-					categories[count] = cats[i];
+				if(cats[i].first == "CG"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
 					++count;
-					cout<<" "<<cats[i];
+					cout<<"  "<<cats[i].first;
 				}
 			}
 			for(int i= 0; i<cats.size(); i++){
-				if(cats[i] == "SV"){
-					categories[count] = cats[i];
+				if(cats[i].first == "SHO"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
 					++count;
-					cout<<"  "<<cats[i];
+					cout<<" "<<cats[i].first;
 				}
 			}
 			for(int i= 0; i<cats.size(); i++){
-				if(cats[i] == "H"){
-					categories[count] = cats[i];
+				if(cats[i].first == "SV"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
 					++count;
-					cout<<"   "<<cats[i];
-				}
-				if(cats[i] == "HIT"){
-					categories[count] = cats[i];
-					++count;
-					cout<<" "<<cats[i];
+					cout<<"  "<<cats[i].first;
 				}
 			}
 			for(int i= 0; i<cats.size(); i++){
-				if(cats[i] == "ER"){
-					categories[count] = cats[i];
+				if(cats[i].first == "H"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
 					++count;
-					cout<<"  "<<cats[i];
+					cout<<"   "<<cats[i].first;
+				}
+				if(cats[i].first == "HIT"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
+					++count;
+					cout<<" "<<cats[i].first;
 				}
 			}
 			for(int i= 0; i<cats.size(); i++){
-				if(cats[i] == "BB"){
-					categories[count] = cats[i];
+				if(cats[i].first == "ER"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
 					++count;
-					cout<<"  "<<cats[i];
+					cout<<"  "<<cats[i].first;
 				}
 			}
 			for(int i= 0; i<cats.size(); i++){
-				if(cats[i] == "K"){
-					categories[count] = cats[i];
+				if(cats[i].first == "BB"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
 					++count;
-					cout<<"   "<<cats[i];
-				}
-				if(cats[i] == "SO"){
-					categories[count] = cats[i];
-					++count;
-					cout<<"  "<<cats[i];
+					cout<<"  "<<cats[i].first;
 				}
 			}
 			for(int i= 0; i<cats.size(); i++){
-				if(cats[i] == "HLD"){
-					categories[count] = cats[i];
+				if(cats[i].first == "K"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
 					++count;
-					cout<<" "<<cats[i];
+					cout<<"   "<<cats[i].first;
+				}
+				if(cats[i].first == "SO"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
+					++count;
+					cout<<"  "<<cats[i].first;
 				}
 			}
 			for(int i= 0; i<cats.size(); i++){
-				if(cats[i] == "RW"){
-					categories[count] = cats[i];
+				if(cats[i].first == "HLD"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
 					++count;
-					cout<<"  "<<cats[i];
+					cout<<" "<<cats[i].first;
 				}
 			}
 			for(int i= 0; i<cats.size(); i++){
-				if(cats[i] == "QS"){
-					categories[count] = cats[i];
+				if(cats[i].first == "RW"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
 					++count;
-					cout<<"  "<<cats[i];
+					cout<<"  "<<cats[i].first;
+				}
+			}
+			for(int i= 0; i<cats.size(); i++){
+				if(cats[i].first == "QS"){
+					categories[count].first = cats[i].first;
+					categories[count].second = cats[i].second;
+					++count;
+					cout<<"  "<<cats[i].first;
 				}
 			}
 			cout<<"\n";
@@ -293,8 +333,8 @@ class Player:Hitter,Pitcher{
 		string name;
 		Hitter h;
 		Pitcher p;
-		vector<string> cats;
-		int value;
+		vector<pair<string,double>> cats;
+		int stat_value;
 		vector<int> statline;
 	public:
 		Player(string player, Hitter a){
@@ -313,14 +353,14 @@ class Player:Hitter,Pitcher{
 				cats = p.get_cats();
 			}
 			for(int i= 0; i<cats.size(); i++){
-				if(cats[i] == "IP"){
-					cout<<"Enter "<<name<<"'s value for "<<cats[i]<<", to the nearest integer\n";
+				if(cats[i].first == "IP"){
+					cout<<"Enter "<<name<<"'s value for "<<cats[i].first<<", to the nearest integer\n";
 				}
 				else{
-					cout<<"Enter "<<name<<"'s value for "<<cats[i]<<"\n";
+					cout<<"Enter "<<name<<"'s value for "<<cats[i].first<<"\n";
 				}
-				cin>>value;
-				statline.push_back(value);
+				cin>>stat_value;
+				statline.push_back(stat_value);
 			}
 			cout<<"\n";
 		}
@@ -356,61 +396,21 @@ class Player:Hitter,Pitcher{
 };
 
 double hitter_total(Player player,Hitter h){
-	vector<string> cats = h.get_cats();
+	vector<pair<string,double>> cats = h.get_cats();
 	vector<int> statline = player.get_statline();
 	double value = 0;
 	for(int i= 0; i<cats.size(); i++){
-		if(cats[i] == "RUN" || cats[i] == "R" || cats[i] == "1B" || cats[i] == "RBI" || cats[i] == "SH" || cats[i] == "SB"){
-			value += statline[i];
-		}		
-		if(cats[i] == "2B"){
-			value += (2*statline[i]);
-		}
-		if(cats[i] == "3B"){
-			value += (3*statline[i]);
-		}
-		if(cats[i] == "HR"){
-			value += (4*statline[i]);
-		}
-		if(cats[i] == "GS"){
-			value += (6*statline[i]);
-		}
-		if(cats[i] == "BB"){
-			value += (0.25*statline[i]);
-		}
+		value += (cats[i].second*statline[i]);
 	}
 	return value;
 }
 
 double pitcher_total(Player player,Pitcher p){ 
-	vector<string> cats = p.get_cats();
+	vector<pair<string,double>> cats = p.get_cats();
 	vector<int> statline = player.get_statline();
 	double value = 0;
 	for(int i= 0; i<cats.size(); i++){
-		if(cats[i] == "IP"){
-			value += (0.5*statline[i]);
-		}		
-		if(cats[i] == "W" || cats[i] == "WIN" || cats[i] == "RW"){
-			value += (5*statline[i]);
-		}
-		if(cats[i] == "CG" || cats[i] == "SHO" || cats[i] == "QS"){
-			value += (3*statline[i]);
-		}
-		if(cats[i] == "SV"){
-			value += (4*statline[i]);
-		}
-		if(cats[i] == "HLD"){
-			value += (2*statline[i]);
-		}
-		if(cats[i] == "K" || cats[i] == "SO"){
-			value += statline[i];
-		}
-		if(cats[i] == "HIT" || cats[i] == "H" || cats[i] == "BB"){
-			value -= (0.25*statline[i]);
-		}
-		if(cats[i] == "ER"){
-			value -= statline[i];
-		}
+		value += (cats[i].second*statline[i]);
 	}
 	return value;
 }
