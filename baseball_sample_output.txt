@@ -1,0 +1,157 @@
+Add a valid MLB hitting category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished
+Example: HR 4
+Add a valid MLB hitting category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished
+run 1
+Invalid category!
+Add a valid MLB hitting category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished
+runs 1
+Too many letters!
+Add a valid MLB hitting category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished
+RUNS 1
+Too many letters!
+Add a valid MLB hitting category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished
+RUN 1
+Add a valid MLB hitting category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished
+1B 1
+Add a valid MLB hitting category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished
+2B 2
+Add a valid MLB hitting category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished
+3B 3
+Add a valid MLB hitting category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished
+HR 4
+Add a valid MLB hitting category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished
+RBI 1
+Add a valid MLB hitting category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished
+SH 1
+Add a valid MLB hitting category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished
+SB 1
+Add a valid MLB hitting category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished
+CS 0
+Add a valid MLB hitting category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished
+BB 0.25
+Add a valid MLB hitting category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished
+SO 0
+Add a valid MLB hitting category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished
+GS 6
+Add a valid MLB hitting category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished
+Q 0
+                     RUN  1B  2B  3B  HR RBI  SH  SB  CS  BB  SO  GS
+Add a valid MLB pitching category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished
+Example: IP 0.5
+Add a valid MLB pitching category (3 char limit, UPPERCASE), type Q 0 when finished
+IP 0.5
+Add a valid MLB pitching category (3 char limit, UPPERCASE), type Q 0 when finished
+WIN 5
+Add a valid MLB pitching category (3 char limit, UPPERCASE), type Q 0 when finished
+CG 3
+Add a valid MLB pitching category (3 char limit, UPPERCASE), type Q 0 when finished
+SHO 3
+Add a valid MLB pitching category (3 char limit, UPPERCASE), type Q 0 when finished
+QS 3
+Add a valid MLB pitching category (3 char limit, UPPERCASE), type Q 0 when finished
+QUAL 10
+Too many letters!
+Add a valid MLB pitching category (3 char limit, UPPERCASE), type Q 0 when finished
+Q 12
+Invalid category!
+Add a valid MLB pitching category (3 char limit, UPPERCASE), type Q 0 when finished
+SV 0
+Add a valid MLB pitching category (3 char limit, UPPERCASE), type Q 0 when finished
+HLD 0
+Add a valid MLB pitching category (3 char limit, UPPERCASE), type Q 0 when finished
+RW 0
+Add a valid MLB pitching category (3 char limit, UPPERCASE), type Q 0 when finished
+BB -0.25
+Add a valid MLB pitching category (3 char limit, UPPERCASE), type Q 0 when finished
+HIT -0.25
+Add a valid MLB pitching category (3 char limit, UPPERCASE), type Q 0 when finished
+K 1
+Add a valid MLB pitching category (3 char limit, UPPERCASE), type Q 0 when finished
+ER -1
+Add a valid MLB pitching category (3 char limit, UPPERCASE), type Q 0 when finished
+Q 0
+                      IP WIN  CG SHO  SV HIT  ER  BB   K HLD  RW  QS
+Enter BarryBonds2001's value for RUN
+129
+Enter BarryBonds2001's value for 1B
+39
+Enter BarryBonds2001's value for 2B
+32
+Enter BarryBonds2001's value for 3B
+2
+Enter BarryBonds2001's value for HR
+73
+Enter BarryBonds2001's value for RBI
+137
+Enter BarryBonds2001's value for SH
+0
+Enter BarryBonds2001's value for SB
+13
+Enter BarryBonds2001's value for CS
+3
+Enter BarryBonds2001's value for BB
+177
+Enter BarryBonds2001's value for SO
+93
+Enter BarryBonds2001's value for GS
+2
+
+                     RUN  1B  2B  3B  HR RBI  SH  SB  CS  BB  SO  GS
+BarryBonds2001       129  39  32   2  73 137   0  13   3 177  93   2
+BarryBonds2001's total fantasy points: 736.25
+Enter AlexRodriguez2007's value for RUN
+143
+Enter AlexRodriguez2007's value for 1B
+98
+Enter AlexRodriguez2007's value for 2B
+31
+Enter AlexRodriguez2007's value for 3B
+0
+Enter AlexRodriguez2007's value for HR
+54
+Enter AlexRodriguez2007's value for RBI
+156
+Enter AlexRodriguez2007's value for SH
+0
+Enter AlexRodriguez2007's value for SB
+24
+Enter AlexRodriguez2007's value for CS
+4
+Enter AlexRodriguez2007's value for BB
+95
+Enter AlexRodriguez2007's value for SO
+120
+Enter AlexRodriguez2007's value for GS
+3
+
+                     RUN  1B  2B  3B  HR RBI  SH  SB  CS  BB  SO  GS
+AlexRodriguez2007    143  98  31   0  54 156   0  24   4  95 120   3
+AlexRodriguez2007's total fantasy points: 740.75
+Enter ClaytonKershaw2014's value for IP, to the nearest integer
+198
+Enter ClaytonKershaw2014's value for WIN
+21
+Enter ClaytonKershaw2014's value for CG
+6
+Enter ClaytonKershaw2014's value for SHO
+2
+Enter ClaytonKershaw2014's value for SV
+0
+Enter ClaytonKershaw2014's value for HIT
+139
+Enter ClaytonKershaw2014's value for ER
+39
+Enter ClaytonKershaw2014's value for BB
+31
+Enter ClaytonKershaw2014's value for K
+239
+Enter ClaytonKershaw2014's value for HLD
+0
+Enter ClaytonKershaw2014's value for RW
+0
+Enter ClaytonKershaw2014's value for QS
+24
+
+                      IP WIN  CG SHO  SV HIT  ER  BB   K HLD  RW  QS
+ClaytonKershaw2014   198  21   6   2   0 139  39  31 239   0   0  24
+ClaytonKershaw2014's total fantasy points: 457.5
