@@ -1,4 +1,3 @@
-baseball
 An MLB points fantasy player scoring calculator
 Uses: Multiple inheritance, OOP, vectors, tons of parsing
  
