@@ -36,7 +36,10 @@ class Hitter{
 				cin>>cat;
 				cin>>cat_value;
 				if (cat == "Q" && cat_value == 0) break;
-				if (cat.length() <= 3){
+				else if(cat == "Q" && cat_value != 0){
+					cout<<"Invalid quit command! Type Q 0\n";
+				}
+				else if (cat.length() <= 3){
 					add_hit(cat,cat_value);
 				}
 				else{
@@ -195,7 +198,10 @@ class Pitcher{
 				cin>>cat;
 				cin>>cat_value;
 				if (cat == "Q" && cat_value == 0) break;
-				if (cat.length() <= 3){
+				else if(cat == "Q" && cat_value != 0){
+					cout<<"Invalid quit command! Type Q 0\n";
+				}
+				else if (cat.length() <= 3){
 					add_pitch(cat,cat_value);
 				}
 				else{
@@ -389,6 +395,9 @@ class Player:Hitter,Pitcher{
 				}
 				else if(statline[i]/1000 == 0){
 					cout<<" "<<statline[i];
+				}
+				else if(statline[i]/10000 == 0){
+					cout<<statline[i];
 				}
 			}
 			cout<<"\n";
