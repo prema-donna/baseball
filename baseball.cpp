@@ -424,6 +424,33 @@ double pitcher_total(Player player,Pitcher p){
 	return value;
 }
 
+void add_player(Hitter h, Pitcher p){
+	while(1){
+		string name;
+		char hp;
+		cout<<"Enter name of hitter or pitcher. Type 'Q' to quit\n";
+		cin>>name;
+		if(name == "Q") return;
+		cout<<"Specify whether this player is a hitter (type 'H') or a pitcher (type 'P'):\n";
+		cin>>hp;
+		if(hp == 'H'){
+			Player hitter(name, h);
+			hitter.player_prompt(true);
+			hitter.print_player_info(true);
+			cout<<name<<"'s total fantasy points: "<<hitter_total(hitter,h)<<"\n";
+		}
+		else if(hp == 'P'){
+			Player pitcher(name, p);
+			pitcher.player_prompt(false);
+			pitcher.print_player_info(false);
+			cout<<name<<"'s total fantasy points: "<<pitcher_total(pitcher,p)<<"\n";
+		}
+		else{
+			cout<<"Invalid input! After re-entering the name of the hitter or pitcher, type H or P when prompted!\n";
+		}
+	}
+}
+
 int main(){
 	Hitter h;
 	h.prompt();
@@ -433,23 +460,7 @@ int main(){
 	p.prompt();
 	p.print_all_categories();
 	
-	string bonds = "BarryBonds2001";
-	Player barry_bonds(bonds, h);
-	barry_bonds.player_prompt(true);
-	barry_bonds.print_player_info(true);
-	cout<<bonds<<"'s total fantasy points: "<<hitter_total(barry_bonds,h)<<"\n";
-	
-	string aRod = "AlexRodriguez2007";
-	Player alex_rodriguez(aRod, h);
-	alex_rodriguez.player_prompt(true);
-	alex_rodriguez.print_player_info(true);
-	cout<<aRod<<"'s total fantasy points: "<<hitter_total(alex_rodriguez,h)<<"\n";
-	
-	string kershaw = "ClaytonKershaw2014";
-	Player clayton_kershaw(kershaw, p);
-	clayton_kershaw.player_prompt(false);
-	clayton_kershaw.print_player_info(false);
-	cout<<kershaw<<"'s total fantasy points: "<<pitcher_total(clayton_kershaw,p)<<"\n";
+	add_player(h,p);
 	
 	return 0;
 }
