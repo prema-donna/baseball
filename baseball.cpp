@@ -2,6 +2,7 @@
 #include<cstdlib>
 #include<vector>
 #include<string>
+#include<limits>
 
 using namespace std;
 
@@ -32,9 +33,12 @@ class Hitter{
 			while(1){
 				string cat;
 				double cat_value;
-				cout<<"Add a valid MLB hitting category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished\n";
-				cin>>cat;
-				cin>>cat_value;
+				while((cout<<"Add a valid MLB hitting category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished\n")
+					&& (!(cin>>cat) || !(cin>>cat_value))){
+					cout<<"Invalid input!\n";
+					cin.clear();
+					cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				}
 				if (cat == "Q" && cat_value == 0) break;
 				else if(cat == "Q" && cat_value != 0){
 					cout<<"Invalid quit command! Type Q 0\n";
@@ -194,9 +198,12 @@ class Pitcher{
 			while(1){
 				string cat;
 				double cat_value;
-				cout<<"Add a valid MLB pitching category (3 char limit, UPPERCASE), type Q 0 when finished\n";
-				cin>>cat;
-				cin>>cat_value;
+				while((cout<<"Add a valid MLB pitching category (3 char limit, UPPERCASE), type Q 0 when finished\n")
+					&& (!(cin>>cat) || !(cin>>cat_value))){
+					cout<<"Invalid input!\n";
+					cin.clear();
+					cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				}
 				if (cat == "Q" && cat_value == 0) break;
 				else if(cat == "Q" && cat_value != 0){
 					cout<<"Invalid quit command! Type Q 0\n";
@@ -428,26 +435,35 @@ void add_player(Hitter h, Pitcher p){
 	while(1){
 		string name;
 		char hp;
-		cout<<"Enter name of hitter or pitcher. Type 'Q' to quit\n";
-		cin>>name;
+		while((cout<<"Enter name of hitter or pitcher. Type 'Q' to quit\n") && !(cin>>name)){
+			cout<<"Invalid input!\n";
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		}
 		if(name == "Q") return;
-		cout<<"Specify whether this player is a hitter (type 'H') or a pitcher (type 'P'):\n";
-		cin>>hp;
-		if(hp == 'H'){
-			Player hitter(name, h);
-			hitter.player_prompt(true);
-			hitter.print_player_info(true);
-			cout<<name<<"'s total fantasy points: "<<hitter_total(hitter,h)<<"\n";
-		}
-		else if(hp == 'P'){
-			Player pitcher(name, p);
-			pitcher.player_prompt(false);
-			pitcher.print_player_info(false);
-			cout<<name<<"'s total fantasy points: "<<pitcher_total(pitcher,p)<<"\n";
-		}
-		else{
-			cout<<"Invalid input! After re-entering the name of the hitter or pitcher, type H or P when prompted!\n";
-		}
+		middle:
+			while((cout<<"Specify whether this player is a hitter (type 'H') or a pitcher (type 'P'):\n") && !(cin>>hp)){
+				cout<<"Invalid input!\n";
+				cin.clear();
+				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				goto middle;
+			}			
+			if(hp == 'H'){
+				Player hitter(name, h);
+				hitter.player_prompt(true);
+				hitter.print_player_info(true);
+				cout<<name<<"'s total fantasy points: "<<hitter_total(hitter,h)<<"\n";
+			}
+			else if(hp == 'P'){
+				Player pitcher(name, p);
+				pitcher.player_prompt(false);
+				pitcher.print_player_info(false);
+				cout<<name<<"'s total fantasy points: "<<pitcher_total(pitcher,p)<<"\n";
+			}
+			else{
+				cout<<"Invalid input! Type H or P when prompted!\n";
+				goto middle;
+			}
 	}
 }
 
