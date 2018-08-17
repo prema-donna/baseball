@@ -433,14 +433,20 @@ double pitcher_total(Player player,Pitcher p){
 
 void add_player(Hitter h, Pitcher p){
 	while(1){
-		string name;
+		string first_name;
+		string last_name;
 		char hp;
-		while((cout<<"Enter name of hitter or pitcher. Type 'Q' to quit\n") && !(cin>>name)){
-			cout<<"Invalid input!\n";
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		}
-		if(name == "Q") return;
+		start:
+			while((cout<<"Enter first name and last name of hitter or pitcher. Type 'Q Q' to quit\n") && (!(cin>>first_name) || !(cin>>last_name))){
+				cout<<"Invalid input!\n";
+				cin.clear();
+				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			}
+			if(first_name == "Q" && last_name == "Q") return;
+			else if ((first_name == "Q" && last_name != "Q") || (first_name != "Q" && last_name == "Q")){
+				cout<<"Incorrect attempt at quitting the program! Type 'Q Q' to successfully quit the program.\n";
+				goto start;
+			}
 		middle:
 			while((cout<<"Specify whether this player is a hitter (type 'H') or a pitcher (type 'P'):\n") && !(cin>>hp)){
 				cout<<"Invalid input!\n";
@@ -449,16 +455,16 @@ void add_player(Hitter h, Pitcher p){
 				goto middle;
 			}			
 			if(hp == 'H'){
-				Player hitter(name, h);
+				Player hitter(first_name+" "+last_name, h);
 				hitter.player_prompt(true);
 				hitter.print_player_info(true);
-				cout<<name<<"'s total fantasy points: "<<hitter_total(hitter,h)<<"\n";
+				cout<<first_name+" "+last_name<<"'s total fantasy points: "<<hitter_total(hitter,h)<<"\n";
 			}
 			else if(hp == 'P'){
-				Player pitcher(name, p);
+				Player pitcher(first_name+" "+last_name, p);
 				pitcher.player_prompt(false);
 				pitcher.print_player_info(false);
-				cout<<name<<"'s total fantasy points: "<<pitcher_total(pitcher,p)<<"\n";
+				cout<<first_name+" "+last_name<<"'s total fantasy points: "<<pitcher_total(pitcher,p)<<"\n";
 			}
 			else{
 				cout<<"Invalid input! Type H or P when prompted!\n";
