@@ -28,12 +28,12 @@ class Hitter{
 			}
 		}
 		void prompt(){
-			cout<<"Add a valid MLB hitting category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished\n";
+			cout<<"Add a valid MLB hitting category (3 char limit, UPPERCASE), and its point value. Type ALL 0 to view all categories. Type Q 0 when finished\n";
 			cout<<"Example: HR 4\n"; 
 			while(1){
 				string cat;
 				double cat_value;
-				while((cout<<"Add a valid MLB hitting category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished\n")
+				while((cout<<"Add a valid MLB hitting category (3 char limit, UPPERCASE), and its point value. Type ALL 0 to view all categories. Type Q 0 when finished\n")
 					&& (!(cin>>cat) || !(cin>>cat_value))){
 					cout<<"Invalid input!\n";
 					cin.clear();
@@ -42,6 +42,24 @@ class Hitter{
 				if (cat == "Q" && cat_value == 0) break;
 				else if(cat == "Q" && cat_value != 0){
 					cout<<"Invalid quit command! Type Q 0\n";
+				}
+				else if(cat == "ALL" && cat_value == 0){
+					cout<<"Runs: R, RUN\n";
+					cout<<"Singles: 1B\n";
+					cout<<"Doubles: 2B\n";
+					cout<<"Triples: 3B\n";
+					cout<<"Home Runs: HR\n";
+					cout<<"Grand Slams: GS\n";
+					cout<<"Home Runs: HR\n";
+					cout<<"Runs Batted In: RBI\n";
+					cout<<"Stolen Bases: SB\n";
+					cout<<"Caught Stealing: CS\n";
+					cout<<"Walks/Bases on Balls: BB\n";
+					cout<<"Strikeouts: K, SO\n";
+					cout<<"Sacrifice Hits: SH\n";
+				}
+				else if(cat == "ALL" && cat_value != 0){
+					cout<<"Invalid ALL command! Type ALL 0\n";
 				}
 				else if (cat.length() <= 3){
 					add_hit(cat,cat_value);
@@ -193,12 +211,12 @@ class Pitcher{
 			}
 		}
 		void prompt(){
-			cout<<"Add a valid MLB pitching category (3 char limit, UPPERCASE), and its point value. Type Q 0 when finished\n";
+			cout<<"Add a valid MLB pitching category (3 char limit, UPPERCASE), and its point value. Type ALL 0 to view all categories. Type Q 0 when finished\n";
 			cout<<"Example: IP 0.5\n"; 
 			while(1){
 				string cat;
 				double cat_value;
-				while((cout<<"Add a valid MLB pitching category (3 char limit, UPPERCASE), type Q 0 when finished\n")
+				while((cout<<"Add a valid MLB pitching category (3 char limit, UPPERCASE), and its point value. Type ALL 0 to view all categories. Type Q 0 when finished\n")
 					&& (!(cin>>cat) || !(cin>>cat_value))){
 					cout<<"Invalid input!\n";
 					cin.clear();
@@ -207,6 +225,22 @@ class Pitcher{
 				if (cat == "Q" && cat_value == 0) break;
 				else if(cat == "Q" && cat_value != 0){
 					cout<<"Invalid quit command! Type Q 0\n";
+				}
+				else if(cat == "ALL" && cat_value == 0){
+					cout<<"Innings Pitched: IP\n";
+					cout<<"Wins: W, WIN\n";
+					cout<<"Strikeouts: K, SO\n";
+					cout<<"Walks/Bases on Balls: BB\n";
+					cout<<"Earned Runs Allowed: ER\n";
+					cout<<"Hits Allowed: H, HIT\n";
+					cout<<"Complete Games: CG\n";
+					cout<<"Shutouts: SHO\n";
+					cout<<"Saves: SV\n";
+					cout<<"Holds: HLD\n";
+					cout<<"Reliever Wins: RW\n";
+				}
+				else if(cat == "ALL" && cat_value != 0){
+					cout<<"Invalid ALL command! Type ALL 0\n";
 				}
 				else if (cat.length() <= 3){
 					add_pitch(cat,cat_value);
